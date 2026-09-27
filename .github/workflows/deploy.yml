@@ -24,22 +24,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Prepare website
         run: |
-          mkdir _site
-          cp -r client/* _site/
+          mkdir -p _site
+          cp -r client/. _site/
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
